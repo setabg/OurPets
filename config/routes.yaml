@@ -1,0 +1,16 @@
+home:
+  path: /
+  controller: App\Controller\MainPageController::index
+added:
+    path: /added
+    controller: App\Controller\MainPageController::custom
+add_pets:
+  path: /addPets
+  controller: App\Controller\AddPetsController::addPets
+search:
+  path: /search
+  controller: App\Controller\SearchController::searchPet
+show_result:
+  path: /show-result
+  controller: App\Controller\SearchController::showResult
+

@@ -1,0 +1,101 @@
+{% extends('base.html.twig')  %}
+        {% block stylesheets %}
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            {#            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">#}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+{% block body%}
+    <h3>Нашите домашни любимци</h3>
+
+        {% if petsByNameAndKind %}
+            <table class="table table-striped">
+            <thead>
+            <tr>
+                <td>{{ 'Име' }}</td>
+                <td>{{ 'Вид на животното' }}</td>
+                <td>{{ 'Информация' }}</td>
+                <td>{{ 'Дата на добявяне' }}</td>
+            </tr>
+            </thead>
+            <tbody>
+                {% for pet in petsByNameAndKind %}
+                    <tr>
+                        <td>
+                           <mark>{{ pet.name }}</mark>
+                        </td>
+                        <td>
+                            {{ pet.petKind }}
+                        </td>
+                        <td>
+                            {{ pet.petInfo }}
+                        </td>
+                        <td>
+                            {{ pet.createdAt|format_datetime('short', 'none') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            {% elseif petsByName %}
+                <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td>{{ 'Име' }}</td>
+                    <td>{{ 'Вид на животното' }}</td>
+                    <td>{{ 'Информация' }}</td>
+                    <td>{{ 'Дата на добявяне' }}</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for pet in petsByName %}
+                    <tr>
+                        <td>
+                            <mark>{{ pet.name }}</mark>
+                        </td>
+                        <td>
+                            {{ pet.petKind }}
+                        </td>
+                        <td>
+                            {{ pet.petInfo }}
+                        </td>
+                        <td>
+                            {{ pet.createdAt|format_datetime('short', 'none') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            {% elseif petsByKind %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>{{ 'Име' }}</td>
+                        <td>{{ 'Вид на животното' }}</td>
+                        <td>{{ 'Информация' }}</td>
+                        <td>{{ 'Дата на добявяне' }}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                {% for pet in petsByKind %}
+                    <tr>
+                        <td>
+                            {{ pet.name }}
+                        </td>
+                        <td>
+                            {{ pet.petKind }}
+                        </td>
+                        <td>
+                            {{ pet.petInfo }}
+                        </td>
+                        <td>
+                            {{ pet.createdAt|format_datetime('short', 'none') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            {% else %}
+                <h2>{{ 'Без резултат' }}</h2>
+            {% endif %}
+{% endblock %}

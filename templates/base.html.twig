@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        {#{{ encore_entry_link_tags('app') }}#}
+    {% endblock %}
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light main-nav">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="my-auto">
+            <a class="nav-link" href="{{ path('home') }}">{{ 'Начало'}}</a>
+        </li>
+        <li class="my-auto">
+            <a class="nav-link" href="{{ path('add_pets') }}">{{ 'Добави домашни любимци'}}</a>
+        </li>
+        <li class="my-auto">
+            <a class="nav-link" href="{{ path('search') }}">{{ 'Търси'}}</a>
+        </li>
+    </ul>
+
+</nav>
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+<div>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</div>
+</body>
+</html>

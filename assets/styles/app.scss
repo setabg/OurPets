@@ -1,0 +1,11 @@
+@import "./custom.scss";
+@import "./components/_button.scss";
+@import "./layouts/_grid.scss";
+
+body {
+    background-color: lightgray;
+}
+mark {
+    background-color: yellow;
+    color: black;
+}

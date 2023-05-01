@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <form class="form-inline my-2 my-lg-0"
+          action="{{ path('show_result') }}"
+          method="GET">
+        <br>
+        <select class="form-control" name="petKind">
+            <option value="" selected="selected" disabled="disabled">Изберете вид животно</option>
+            {% for petKind in petKinds %}
+                <option value="{{ petKind }}">{{ petKind }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label for="name">Моля, въведете име</label><br>
+        <input class="form-control mr-sm-2" type="search"
+               name="petName"
+               value="{{ app.request.query.get('petName') }}"
+        >
+        <input type="submit" value="{{ 'Търси' }}">
+    </form>
+{% endblock %}
